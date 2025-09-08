@@ -56,6 +56,28 @@ public class LL {
         temp.next = temp.next.next;
         return head;
     }
+
+    public static Node reverseList(Node head) {
+        if (head == null) return null;
+        Node prev, curr, next;
+        prev = null;
+        curr = head;
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
+
+    public static Node reverseListRecursively(Node head) {
+        if(head == null || head.next == null) return head;
+        Node newHead = reverseListRecursively(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newHead;
+    }
 }
 
 class Main {
