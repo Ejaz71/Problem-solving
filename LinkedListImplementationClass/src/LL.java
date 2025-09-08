@@ -8,6 +8,7 @@ public class LL {
             this.data = data;
             this.next = null;
         }
+        Node() {};
         //addNode (this, 1); // can i use addNode here?
     }
 
@@ -42,7 +43,19 @@ public class LL {
         return length;
     }
 
-
+    public static Node removeNthFromEnd(Node head, int n) {
+        int length = listLength(head);
+        if(length == 1) return null;
+        int index = length - n, i = 1;
+        if(index == 0) return head.next;
+        Node temp = head;
+        while(i < index) {
+            temp = temp.next;
+            i++;
+        }
+        temp.next = temp.next.next;
+        return head;
+    }
 }
 
 class Main {
@@ -50,7 +63,14 @@ class Main {
         LL.Node head = new LL.Node(10);
         LL.addNode(head,20);
         head = LL.addNodeFirst(head, 9);
+        LL.addNode(head, 30);
+        LL.addNode(head, 40);
+        LL.addNode(head, 50);
+        LL.addNode(head, 60);
         LL.printLL(head);
         System.out.println(LL.listLength(head));
+
+        LL.Node headAfterRemoval = LL.removeNthFromEnd(head, 7);
+        LL.printLL(headAfterRemoval);
     }
 }
