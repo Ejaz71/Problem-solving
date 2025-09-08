@@ -90,7 +90,15 @@ class Main {
         LL.addNode(head, 50);
         LL.addNode(head, 60);
         LL.printLL(head);
-        System.out.println(LL.listLength(head));
+        head = LL.reverseList(head);
+        LL.printLL(head);
+        head = LL.reverseListRecursively(head);
+        LL.printLL(head);
+
+        LL.Node head2 = new LL.Node(4);
+        head2 = LL.reverseList(head2);
+        LL.printLL(head2);
+        //System.out.println(LL.listLength(head));
 
         LL.Node headAfterRemoval = LL.removeNthFromEnd(head, 7);
         LL.printLL(headAfterRemoval);
