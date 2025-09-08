@@ -78,6 +78,32 @@ public class LL {
         head.next = null;
         return newHead;
     }
+
+    public static Node mergeTwoLists(Node list1, Node list2) {
+        Node merged = new Node();
+        while ( list1 != null || list2 != null) {
+            if (list1 == null) {
+                addNode(merged, list2.data);
+                //System.out.print(list2.data + " ");
+                list2 = list2.next;
+
+            } else if (list2 == null) {
+                addNode(merged, list1.data);
+                list1 = list1.next;
+            } else {
+                if (list1.data < list2.data) {
+                    addNode(merged, list1.data);
+                    //System.out.print(list1.data + " ");
+                    list1 = list1.next;
+                } else {
+                    addNode(merged, list2.data);
+                    //System.out.print(list2.data + " ");
+                    list2 = list2.next;
+                }
+            }
+        }
+        return merged.next;
+    }
 }
 
 class Main {
@@ -89,18 +115,36 @@ class Main {
         LL.addNode(head, 40);
         LL.addNode(head, 50);
         LL.addNode(head, 60);
+        LL.addNode(head, 65);
+        LL.addNode(head, 67);
+        LL.addNode(head, 70);
+        LL.addNode(head, 75);
+        LL.addNode(head, 80);
+        LL.addNode(head, 100);
         LL.printLL(head);
-        head = LL.reverseList(head);
-        LL.printLL(head);
-        head = LL.reverseListRecursively(head);
-        LL.printLL(head);
+//        head = LL.reverseList(head);
+//        LL.printLL(head);
+//        head = LL.reverseListRecursively(head);
+//        LL.printLL(head);
 
         LL.Node head2 = new LL.Node(4);
-        head2 = LL.reverseList(head2);
+        LL.addNode(head2,5);
+        LL.addNode(head2,15);
+        LL.addNode(head2,25);
+        LL.addNode(head2,85);
+        LL.addNode(head2,95);
         LL.printLL(head2);
-        //System.out.println(LL.listLength(head));
 
-        LL.Node headAfterRemoval = LL.removeNthFromEnd(head, 7);
-        LL.printLL(headAfterRemoval);
+        LL.Node head3 = null;
+//        head2 = LL.reverseList(head2);
+//        LL.printLL(head2);
+//        //System.out.println(LL.listLength(head));
+//
+//        LL.Node headAfterRemoval = LL.removeNthFromEnd(head, 7);
+//        LL.printLL(headAfterRemoval);
+        LL.Node mergedList = LL.mergeTwoLists(head, head3);
+        LL.printLL(mergedList);
+
+
     }
 }
