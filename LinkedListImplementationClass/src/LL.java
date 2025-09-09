@@ -104,6 +104,18 @@ public class LL {
         }
         return merged.next;
     }
+
+    public static Node mergeTwoListsRecursively(Node list1, Node list2) {
+        if (list1 == null) return list2;
+        else if (list2 == null) return list1;
+        else if (list1.data < list2.data) {
+            list1.next = mergeTwoListsRecursively(list1.next, list2);
+            return list1;
+        } else {
+            list2.next = mergeTwoListsRecursively(list2.next, list1);
+            return list2;
+        }
+    }
 }
 
 class Main {
@@ -142,7 +154,7 @@ class Main {
 //
 //        LL.Node headAfterRemoval = LL.removeNthFromEnd(head, 7);
 //        LL.printLL(headAfterRemoval);
-        LL.Node mergedList = LL.mergeTwoLists(head, head3);
+        LL.Node mergedList = LL.mergeTwoListsRecursively(head, head2);
         LL.printLL(mergedList);
 
 
