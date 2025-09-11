@@ -116,6 +116,25 @@ public class LL {
             return list2;
         }
     }
+
+    public static boolean isPalindrome(Node head) {
+        int length = listLength(head), i = 0;
+        int[] listArr = new int[length];
+        while (head != null) {
+            listArr[i++] = head.data;
+            head = head.next;
+        }
+        int lo = 0, hi = length -1;
+        boolean isPalindrome = true;
+        while (lo < hi) {
+            if(listArr[lo] != listArr[hi]) return false;
+            lo++;
+            hi--;
+        }
+        return isPalindrome;
+    }
+
+
 }
 
 class Main {
@@ -133,7 +152,27 @@ class Main {
         LL.addNode(head, 75);
         LL.addNode(head, 80);
         LL.addNode(head, 100);
+
+//        LL.printLL(head);
+//        System.out.println(LL.listLength(head));
+//        LL.printLL(head);
+//        System.out.println(LL.listLength(head));
+//        LL.printLL(head);
+//        System.out.println(LL.listLength(head));
+//        LL.printLL(head);
+//        System.out.println(LL.listLength(head));
+//        LL.printLL(head);
+
+        LL.Node headCopy = head;
+        LL.addNode(headCopy, 12);
         LL.printLL(head);
+        LL.printLL(headCopy);
+
+        headCopy = LL.addNodeFirst(headCopy,15);
+        LL.printLL(head);
+        LL.printLL(headCopy);
+
+        //LL.printLL(head);
 //        head = LL.reverseList(head);
 //        LL.printLL(head);
 //        head = LL.reverseListRecursively(head);
@@ -145,7 +184,7 @@ class Main {
         LL.addNode(head2,25);
         LL.addNode(head2,85);
         LL.addNode(head2,95);
-        LL.printLL(head2);
+        //LL.printLL(head2);
 
         LL.Node head3 = null;
 //        head2 = LL.reverseList(head2);
@@ -155,8 +194,21 @@ class Main {
 //        LL.Node headAfterRemoval = LL.removeNthFromEnd(head, 7);
 //        LL.printLL(headAfterRemoval);
         LL.Node mergedList = LL.mergeTwoListsRecursively(head, head2);
-        LL.printLL(mergedList);
+        //LL.printLL(mergedList);
 
+        LL.Node head4Palindrome = new LL.Node(1);
+        LL.addNode(head4Palindrome, 2);
+        LL.addNode(head4Palindrome, 3);
+        LL.addNode(head4Palindrome, 4);
+        LL.addNode(head4Palindrome, 3);
+        LL.addNode(head4Palindrome, 2);
+        LL.addNode(head4Palindrome, 1);
 
+        LL.Node head5 = new LL.Node(1);
+        LL.addNode(head5, 1);
+        LL.addNode(head5, 2);
+        LL.addNode(head5, 1);
+
+        System.out.println(LL.isPalindrome(head) + " " + LL.isPalindrome(head2) + " " + LL.isPalindrome(head3) + " " + LL.isPalindrome(head4Palindrome) + " " + LL.isPalindrome(head5));
     }
 }
